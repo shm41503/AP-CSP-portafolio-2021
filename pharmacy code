@@ -1,0 +1,307 @@
+#CONSTANT VARIABLES
+TAX_RATE = 0.07
+#CONSTANT LISTS: collection. tuple and array usage.
+objects1 = ("Cheap Mask", "Small Alcohol", "Single Vitamin Container", "Single Toilet Paper")
+#recods names of cheap products
+prices1 = (10, 5, 15, 5) #recods prices of cheap products
+objects2 = ("Premium Mask", "Big Alcohol", "Set of Vitamins", "Set of Toilet Paper Rolls")
+#records names of expensive products
+prices2 = (15, 20, 20, 100) #recods prices of expensive products
+
+#CHANGING LISTS: collection. tuple and array usage.
+bought_objects = [] #stores objects that the user properly selected to buy
+bought_prices = [] #stores the prices of the items in bought_objects
+#FUNCTIONS
+#This function draws a rectangle on the screen. When called, you can enter parameters such as
+#the length, width, position, and color of the rectangle
+def draw_rectangle(length, width, x, y, color):
+rect = Rectangle(length, width)
+rect.set_position(x, y)
+rect.set_color(color)
+add(rect)
+#This function displays text on the screen.
+#When called, you can enter parameters such as the position, color, and font
+def add_text(x, y, message, font):
+text = Text(message)
+text.set_position(x, y)
+text.set_color(Color.black)
+text.set_font(font)
+add(text)
+#This function draws a rectangle that functions as the background of the scene
+#When called, the function draws a different background depending on the parameter 'where'
+def draw_background(where):
+if where == "outsidePharmacy":
+draw_rectangle(get_width(), get_height()+30, 0, 0, Color.gray)
+draw_rectangle(get_width(), get_height()-160, 0, 0, Color.blue)
+elif where == "insidePharmacy":
+draw_rectangle(get_width(), get_height(), 0, 0, Color.gray)
+elif where == "white":
+
+draw_rectangle(get_width(), get_height(), 0, 0, Color.white)
+# This function adds an image of a shopping cart
+def add_cart():
+cart1 = Image("https://codehs.com/uploads/977c32d75e4f3d470208021593eee071")
+cart1.set_size(35, 35)
+cart1.set_position(350, 50)
+add(cart1)
+#This function adds a bigger image of a shopping cart (for the last scene)
+def add_cart_go():
+cart2 = Image("https://codehs.com/uploads/4b54b415c8ad3c4eaf6849b0fb862228")
+kit = Image("https://codehs.com/uploads/cd40af11b123690e1bfa29dd38806597")
+kit.set_size(50,50)
+kit.set_position(300,285)
+cart2.set_size(90,90)
+cart2.set_position(270,280)
+add(kit)
+add(cart2)
+#OBJECTS
+#This function adds an image of a mask depending on what the user chose to buy
+#The parameter num is used to determine which mask image will the function display
+#The function displays an error screen if the user didn't enter 1 or 2 as the
+#parameter. The item is not stored in bought_objects() or bought_prices() if this
+#happens.
+def add_mask(num):
+if num == 1:
+mask1 = Image("https://codehs.com/uploads/d9070edd2a1550fa64753e2fb4b77880")
+mask1.set_size(350, 300)
+mask1.set_position(15, 80)
+add(mask1)
+add_text(75, 380, "Item added to cart.", "20pt arial")
+add_text(75, 400, "Click screen for next item.", "12pt arial")
+add_cart()
+elif num == 2:
+mask2 = Image("https://codehs.com/uploads/128d4fcfc5ad40c1dcdc6726a0464bd0")
+mask2.set_size(250, 250)
+mask2.set_position(75,100)
+add(mask2)
+add_text(75, 380, "Item added to cart.", "20pt arial")
+add_text(75, 400, "Click screen for next item.", "12pt arial")
+add_cart()
+
+else:
+add_text(23, 230, "ERROR: Please enter the number 1 or 2", "15pt arial")
+add_text(23, 250, "Click for next scene.", "15pt arial")
+#This function adds an image of an alcohol bottle depending on what the user chose to buy
+#The parameter num is used to determine which bottle image will the function display
+#The function displays an error screen if the user didn't enter 1 or 2 as the
+#parameter. The item is not stored in bought_objects() or bought_prices() if this
+#happens.
+def add_alcohol(num):
+if num == 1:
+alcohol1 = Image("https://codehs.com/uploads/8c9cccf5bd8cb4c41538cd09d73b764d")
+alcohol1.set_size(200, 245) # smaller image size
+alcohol1.set_position(75, 100)
+add(alcohol1)
+add_text(75, 380, "Item added to cart.", "20pt arial")
+add_text(75, 400, "Click screen for next item.", "12pt arial")
+add_cart()
+elif num == 2:
+alcohol2 = Image("https://codehs.com/uploads/bfa6eb9b01c1e080e833bc0dae72761e")
+alcohol2.set_size(200, 240) #bigger image size
+alcohol2.set_position(75, 100)
+add(alcohol2)
+add_text(75, 380, "Item added to cart.", "20pt arial")
+add_text(75, 400, "Click screen for next item.", "12pt arial")
+add_cart()
+else:
+add_text(23, 230, "ERROR: Please enter the number 1 or 2", "15pt arial")
+add_text(23, 250, "Click for next scene.", "15pt arial")
+
+#This function adds an image of vitamins depending on what the user chose to buy
+#The parameter num is used to determine which vitamin image will the function display
+#The function displays an error screen if the user didn't enter 1 or 2 as the
+#parameter. The item is not stored in bought_objects() or bought_prices() if this
+#happens.
+def add_vitamins(num):
+if num == 1:
+vitamin1 = Image("https://codehs.com/uploads/cc8933ef0ba22d7cc0f526feea4f4773") #link
+vitamin1.set_size(250, 250)
+vitamin1.set_position(75, 100)
+add(vitamin1)
+add_text(75, 380, "Item added to cart.", "20pt arial")
+add_text(75, 400, "Click for next item", "12pt arial")
+
+add_cart()
+elif num == 2:
+vitamin2 = Image("https://codehs.com/uploads/52fa88bc63f8d0add8b98f80a28938fd")
+#link
+vitamin2.set_size(200, 250)
+vitamin2.set_position(75, 100)
+add(vitamin2)
+add_text(75, 380, "Item added to cart.", "20pt arial")
+add_text(75, 400, "Click screen for next item.", "12pt arial")
+add_cart()
+else:
+add_text(23, 230, "ERROR: Please enter the number 1 or 2", "15pt arial")
+add_text(23, 250, "Click for next scene.", "15pt arial")
+#This function adds an image of toilet paper depending on what the user chose to buy
+#The parameter num is used to determine which toilet paper image will the function display
+#The function displays an error screen if the user didn't enter 1 or 2 as the
+#parameter. The item is not stored in bought_objects() or bought_prices() if this
+#happens.
+def add_toilet_paper(num):
+if num == 1:
+toilet_paper1 =
+Image("https://codehs.com/uploads/aee787e26d0b6d55f99775ded439a962") #link
+toilet_paper1.set_size(220, 250)
+toilet_paper1.set_position(80, 100)
+add(toilet_paper1)
+add_text(75, 380, "Item added to cart.", "20pt arial")
+add_text(75, 400, "Click screen for receipt.", "12pt arial")
+add_cart()
+elif num == 2:
+toilet_paper2 =
+Image("https://codehs.com/uploads/86058d1b970f987217d840a24aeebadd") #link
+toilet_paper2.set_size(220, 250)
+toilet_paper2.set_position(75, 100)
+add(toilet_paper2)
+add_text(75, 380, "Item added to cart.", "20pt arial")
+add_text(75, 400, "Click screen for receipt.", "12pt arial")
+add_cart()
+else:
+add_text(23, 230, "ERROR: Please enter the number 1 or 2", "15pt arial")
+add_text(23, 250, "Click for next scene (receipt).", "15pt arial")
+#This function adds an image of a pharmacist to the screen
+def add_pharmacist():
+
+pharmacist = Image("https://codehs.com/uploads/89b4877d998589311c0e731f3dd37e4d")
+#link
+pharmacist.set_size(100, 160)
+pharmacist.set_position(200, 200)
+add(pharmacist)
+#This function adds an image of a hospital to the screen
+def add_hospital():
+hospital = Image("https://codehs.com/uploads/9b5bfe6c5ea1fad9af389a6a8d0399ed") #link
+hospital.set_size(400, 400)
+hospital.set_position(0, 0)
+add(hospital)
+#This image adds an image of a kit to the screen (on top of cart image)
+def add_kit():
+kit = Image("https://codehs.com/uploads/3b9e0f063d9156341f565de036d12fd9") # link of
+brown box
+kit.set_size(100, 150)
+kit.set_position(0, 0)
+add(kit)
+#SCENES
+#Draws scene 1: pharmacist introduces the program and gives instructions
+def draw_scene1():
+draw_background("outsidePharmacy")
+add_hospital()
+add_pharmacist()
+add_text(40, get_height()-90, "Hi! We are the Healthy Sunshine pharmacy.", "12pt Arial")
+add_text(40, get_height()-75, "We are selling kits right now that contain masks,", "12t Arial")
+add_text(40, get_height()-60, "alcohol, vitamins, and toilet paper.", "12pt Arial")
+add_text(40, get_height()-40, "Please step inside! Click for the next scene.", "12pt Arial")
+#Prints a receipt with total of all products added into
+#Takes in parameter which is the tax rate at the time. This parameter is managed by the
+programmer
+def draw_receipt_scene(taxRate):
+draw_rectangle(get_width(), get_height(), 0, 0, Color.white)
+add_text(40, 55,"Here is your receipt!", "20pt Arial")
+total_price = 0
+#iteration (for loop)
+#loop prints bought objects and their prices on the screen
+#also adds prices to the total
+for i in range(len(bought_prices)):
+
+total_price = total_price + bought_prices[i]
+add_text(40, 120+i*15, bought_objects[i], "14pt Arial")
+add_text(280, 120+i*15, "$ " + str(bought_prices[i]), "14pt Arial")
+add_text(40, 220,"_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _", "14pt Arial")
+add_text(40,250,"Your total is: $"+ str(total_price),"14pt Arial")
+total_price = total_price*taxRate + total_price
+add_text(40,265,"Your total with tax is: $"+ str(total_price),"14pt Arial")
+
+#Draws scene 6: pharmacist greeting out goodbye.
+def draw_scene6():
+draw_background("outsidePharmacy")
+add_hospital()
+add_pharmacist()
+add_cart_go()
+add_text(get_width()/2-150, get_height()/2+170, "Take care! Use your kit wisely.", "Arial 12pt")
+#MOUSE CLICK HANDLER AND FUNCTION
+#Displays text introducing the program.
+add_text(0, get_height()/2-50, "Welcome to our pharmacy app!", "Arial 3pt")
+add_text(0, get_height()/2, "Click to begin! yay!", "Arial 5pt")
+#Variable that counts the number of scene every time the user clicks on the screen
+scene_counter = 0
+#Function that allows the user to draw the next screen
+#Adds 1 to scene_counter and displays according scene
+#The x and y coordinates of the mouseclick are are sent back to the function
+#(although they are not used in this case)
+def draw_next_screen(x, y):
+global scene_counter
+scene_counter += 1
+#introduction scene
+if scene_counter == 1:
+draw_scene1()
+#prints object names and prices from the lists above.
+#if loop and elif. for loop.
+elif scene_counter == 2:
+draw_background("white")
+add_text(55, 80, "Here are the prices:", "20pt arial")
+for i in range(len(objects1)):
+add_text(55, 120+i*16, objects1[i], "14pt arial")
+add_text(270, 120+i*16, "$ "+ str(prices1[i]), "14pt arial")
+
+for i in range(len(objects2)):
+add_text(55, 200+i*16, objects2[i], "14pt arial")
+add_text(270, 200+i*16, "$ "+ str(prices2[i]), "14pt arial")
+#mask. if loop and elif.
+elif scene_counter == 3:
+draw_background("insidePharmacy")
+mask = int(input("(Enter 1 or 2) Cheap Mask($10) or Premium Mask($15): Which type of
+mask would you like?"))
+add_mask(mask)
+if mask == 1:
+bought_objects.append(objects1[0])
+bought_prices.append(int(prices1[0]))
+elif mask == 2:
+bought_objects.append(objects2[0])
+bought_prices.append(int(prices2[0]))
+#alcohol. if loop and elif.
+elif scene_counter == 4:
+draw_background("insidePharmacy")
+alcohol_which = int(input("(Enter 1 or 2) Small Alcohol($5) or Big Alcohol($20): Which size
+of Alcohol would you like?"))
+add_alcohol(alcohol_which)
+if alcohol_which == 1:
+bought_objects.append(objects1[1])
+bought_prices.append(int(prices1[1]))
+elif alcohol_which == 2:
+bought_objects.append(objects2[1])
+bought_prices.append(int(prices2[1]))
+#vitamin. if loop and elif.
+elif scene_counter == 5:
+draw_background("insidePharmacy")
+vitamin_which = int(input("(Enter 1 or 2) Single Vitamin container($15) or Set of
+Vitamins($20): Which type of vitamins do you want to buy?"))
+add_vitamins(vitamin_which)
+if vitamin_which == 1:
+bought_objects.append(objects1[2])
+bought_prices.append(int(prices1[2]))
+elif vitamin_which == 2:
+bought_objects.append(objects2[2])
+bought_prices.append(int(prices2[2]))
+# toilet paper. if loop and elif.
+elif scene_counter == 6:
+draw_background("insidePharmacy")
+toiletp_which = int(input("(Enter 1 or 2) Single Toilet Paper($5) or Toilet Paper Rolls($100):
+Which alcohol do you want to buy?"))
+
+add_toilet_paper(toiletp_which)
+if toiletp_which == 1:
+bought_objects.append(objects1[3])
+bought_prices.append(int(prices1[3]))
+elif toiletp_which == 2:
+bought_objects.append(objects2[3])
+bought_prices.append(int(prices2[3]))
+elif scene_counter == 7:
+draw_receipt_scene(TAX_RATE)
+else:
+draw_scene6()
+#adds mouse click handler
+#every time the user click the screen, the draw_next_screen function is called
+add_mouse_click_handler(draw_next_screen)
+#This work was created collaboratively with a classmate partner.
+#Images were acquired from various PNG source websites, copyright-free
